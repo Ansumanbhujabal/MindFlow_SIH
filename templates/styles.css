@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+}
+
+:root {
+  --accent-color: #843704;
+  --background-color: #4d2ebc;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.navbar {
+  background-color: var(--accent-color);
+}
