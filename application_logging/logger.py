@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-class logger:
+class Logger:
 
     def __init__(self, file='logFiles.log'):
         self.f_name = file
