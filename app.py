@@ -1,11 +1,11 @@
 import pickle
-from application_logging.logger import logger
+from application_logging.logger import Logger
 from flask import Flask, request, render_template
 from flask_cors import cross_origin
 
 app = Flask(__name__)
 
-logger = logger('logfiles/application.log')
+logger = Logger('logfiles/application.log')
 
 model = pickle.load(open('Scaler_Credit_Data .pkl', 'rb'))
 model2 = pickle.load(open('Credit_Data_RF.pkl', 'rb'))
