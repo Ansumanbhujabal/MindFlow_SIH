@@ -5,18 +5,6 @@ import csv
 
 logger = Logger('logfiles/database.log')
 
-# #04U5TN3d9kI62EIJ
-
-# FYJPS2NeIg4jjbal
-
-# const username = encodeURIComponent("<username>");
-# const password = encodeURIComponent("<password>");
-# const cluster = "<clusterName>";
-# const authSource = "<authSource>";
-# const authMechanism = "<authMechanism>";
-# let uri =
-#   `mongodb+srv://${username}:${password}@${cluster}/?authSource=${authSource}&authMechanism=${authMechanism}`;
-
 
 class dataBaseOperation:
 
@@ -26,8 +14,7 @@ class dataBaseOperation:
         self.database_name = 'credit'
         self.collection_name = 'credit_data'
 
-        # MongoDB connection string, replace it with your connection string
-        self.mongo_uri = "mongodb+srv://Ansu:FYJPS2NeIg4jjbal@python.xmpdwvu.mongodb.net/"
+        self.mongo_uri = "mongodb+srv://Ansu:9o70AT2CuEfmgaCu@home.oj4xpra.mongodb.net/"
 
         self.client = MongoClient(self.mongo_uri)
         self.db = self.client[self.database_name]
