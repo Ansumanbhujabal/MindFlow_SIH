@@ -3,24 +3,28 @@ from pymongo import MongoClient
 import pandas as pd
 import csv
 
-logger = Logger('logfiles/database.log')
+logger = Logger('logfiles/application.log')
 
 
 class dataBaseOperation:
 
     def __init__(self):
+        try:
+            logger.info('INFO', 'Trying To Connect With The Database')
+            self.database_name = 'credit'
+            self.collection_name = 'credit_data'
 
-        logger.info('INFO', 'Trying To Connect With The Database')
-        self.database_name = 'credit'
-        self.collection_name = 'credit_data'
+            self.mongo_uri = "mongodb+srv://Ansu:9o70AT2CuEfmgaCu@home.oj4xpra.mongodb.net/"
 
-        self.mongo_uri = "mongodb+srv://Ansu:9o70AT2CuEfmgaCu@home.oj4xpra.mongodb.net/"
+            self.client = MongoClient(self.mongo_uri)
+            self.db = self.client[self.database_name]
+            self.collection = self.db[self.collection_name]
 
-        self.client = MongoClient(self.mongo_uri)
-        self.db = self.client[self.database_name]
-        self.collection = self.db[self.collection_name]
+            logger.info('INFO', 'The Connection Is Created')
 
-        logger.info('INFO', 'The Connection Is Created')
+        except Exception as e:
+            logger.error(
+                'ERROR', 'Failed to connect to the database. Error: {}'.format(str(e)))
 
     def use_database(self):
         try:
