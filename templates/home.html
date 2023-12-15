@@ -1,16 +1,18 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}User Input Form{% endblock %}</title>
+    <title>{% block title %}Home{% endblock %}</title>
     <style>
       body {
         font-family: "Arial", sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        background-color: #f0f0f0;
+        overflow: hidden; /* Prevent scrolling for the floating image effect */
       }
 
       nav {
@@ -42,6 +44,18 @@
         text-align: center;
         padding: 20px;
         background-color: #f0f0f0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .floating-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: auto;
+        opacity: 0.8;
       }
     </style>
   </head>
@@ -63,9 +77,27 @@
 
     <div class="content">{% block content %}{% endblock %}</div>
 
-    <!-- <div class="home">
-      <h2>Welcome to our User Input Form</h2>
-      <p>This is the home page section. You can add content here.</p>
-    </div> -->
+    <div class="home">
+      <h2>Welcome to our Calming Home</h2>
+      <p>Feel the tranquility and serenity as you explore our site.</p>
+      <img
+        class="floating-image"
+        src="static/images/mentalim.jpg"
+        alt="Floating Image"
+      />
+    </div>
   </body>
-</html>
+</html> -->
+
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="home">
+  <h2>Welcome to our Calming Home</h2>
+  <p>Feel the tranquility and serenity as you explore our site.</p>
+  <img
+    class="floating-image"
+    src="{{ url_for('static', filename=os.path.join('images', 'mentalim.jpg')) }}"
+    alt="Floating Image"
+  />
+</div>
+{% endblock %}
