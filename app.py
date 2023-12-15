@@ -1,12 +1,20 @@
 import pickle
 from application_logging.logger import Logger
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 from flask_cors import cross_origin
+from pymongo import MongoClient
+
 
 app = Flask(__name__)
 
 logger = Logger('logfiles/application.log')
 
+# Configure MongoDB connection
+client = MongoClient(
+    "mongodb+srv://insaneengineer6:e2PX8ym6bAOCBxsJ@cluster0.stpj7kz.mongodb.net/")
+# Replace 'your_database_name' with your actual database name
+db = client['MindFlow']
+users_collection = db['New']
 # model = pickle.load(open('Scaler_Credit_Data .pkl', 'rb'))
 # model2 = pickle.load(open('Credit_Data_RF.pkl', 'rb'))
 
@@ -36,24 +44,34 @@ def menstrual_info():
     return render_template('menstrual_info.html')
 
 
-@app.route("/signup", methods=['GET', 'POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        # Process the form data for signup
-        # You can access form data using request.form
-        name = request.form.get('name')
-        age = request.form.get('age')
-        email = request.form.get('email')
-        password = request.form.get('password')
-        gender = request.form.get('gender')
-        phoneNumber = request.form.get('phoneNumber')
+        name = request.form['name']
+        age = request.form['age']
+        email = request.form['email']
+        password = request.form['password']
+        gender = request.form['gender']
+        phone_number = request.form['phoneNumber']
 
-        # Add your logic here, for example, storing the data in a database
+        # Create a user document
+        user_data = {
+            'name': name,
+            'age': age,
+            'email': email,
+            'password': password,
+            'gender': gender,
+            'phone_number': phone_number
+        }
 
-        # After processing the data, you can redirect to another page
-        # return redirect(url_for('home'))
+        # Insert the user document into the MongoDB collection
+        users_collection.insert_one(user_data)
 
-    # If it's a GET request, simply render the signup page
+        # Redirect to a success page or any other desired page
+        # Correct the template name if needed
+        return redirect(url_for('login'))
+
+    # If it's a GET request or if the form is not submitted, simply render the signup page
     return render_template('signup.html')
 
 
