@@ -1,11 +1,14 @@
+from flask import Flask, session, request, render_template, redirect, url_for, flash
 import pickle
 from application_logging.logger import Logger
-from flask import Flask, request, render_template, redirect, url_for
 from flask_cors import cross_origin
 from pymongo import MongoClient
 
-
 app = Flask(__name__)
+app.secret_key = 'Mysecretkey'  # Replace with your actual secret key
+# Use 'filesystem' or another session type
+app.config['SESSION_TYPE'] = 'filesystem'
+
 
 logger = Logger('logfiles/application.log')
 
@@ -36,6 +39,14 @@ def mental_health():
 
 @app.route("/menstrual_info", methods=['GET', 'POST'])
 def menstrual_info():
+    user = get_user_info()  # Replace with your logic to get user information
+
+    if user and user.get('gender', '').lower() == 'female':
+        # Allow access to the track_periods page for female users
+        return render_template('menstrual_info.html')
+    else:
+        # Redirect to another page or display an error message
+        return redirect(url_for('access_denied'))
     if request.method == 'POST':
         # Process the form data for menstrual information
         # Add your logic here
@@ -53,6 +64,12 @@ def signup():
         password = request.form['password']
         gender = request.form['gender']
         phone_number = request.form['phoneNumber']
+
+        # Check if the email is already in use
+        existing_user = users_collection.find_one({'email': email})
+        if existing_user:
+            flash('Email is already in use. Please choose a different email.', 'error')
+            return render_template('signup.html')
 
         # Create a user document
         user_data = {
@@ -82,20 +99,62 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        # Add your logic here, for example, check email and password against database
+        # Add your logic here to check email and password against the database
+        user = users_collection.find_one(
+            {'email': email, 'password': password})
 
-        # After processing the data, you can redirect to another page
-        # return redirect(url_for('dashboard'))
+        if user:
+            # User authentication successful
+            # Store user information in the session
+            session['user_info'] = {
+                'email': user['email'],
+                'name': user['name'],
+                'gender': user['gender']
+                # Add other user information as needed
+            }
 
-    # If it's a GET request, simply render the login page
+            # Redirect based on gender
+            gender = user.get('gender', '').lower()
+
+            if gender == 'male':
+                return redirect(url_for('mental_health'))
+            elif gender == 'female':
+                return redirect(url_for('track_periods'))
+            else:
+                return redirect(url_for('default_page'))
+
+    # If it's a GET request or if the login is unsuccessful, render the login page
     return render_template('login.html')
+
+
+def get_user_info():
+    # Retrieve user information from the session
+    return session.get('user_info')
+
 
 # ... (existing code)
 
 
 @app.route("/track_periods")
 def track_periods():
-    return render_template('track_periods.html')
+    # Assuming the user information is available in the session or database
+    # Replace this with your actual way of retrieving user information
+    user = get_user_info()  # Replace with your logic to get user information
+
+    if user and user.get('gender', '').lower() == 'female':
+        # Allow access to the track_periods page for female users
+        return render_template('track_periods.html')
+    else:
+        # Redirect to another page or display an error message
+        return redirect(url_for('access_denied'))
+
+# You can create a separate route for an access denied page
+
+
+@app.route("/access_denied")
+def access_denied():
+    return render_template('access_denied.html')
+
 
 # @app.route("/report", methods=['GET', 'POST'])
 # @cross_origin()
