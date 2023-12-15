@@ -7,123 +7,130 @@ app = Flask(__name__)
 
 logger = Logger('logfiles/application.log')
 
-model = pickle.load(open('Scaler_Credit_Data .pkl', 'rb'))
-model2 = pickle.load(open('Credit_Data_RF.pkl', 'rb'))
+# model = pickle.load(open('Scaler_Credit_Data .pkl', 'rb'))
+# model2 = pickle.load(open('Credit_Data_RF.pkl', 'rb'))
 
 
-@app.route("/", methods=['GET', 'POST'])
-@cross_origin()
+@app.route("/", methods=['GET'])
 def home():
-    """
-    :Method_Name: home
-    :DESC: This Will Return The Home Page
-    :param: None
-    :return: index.html
-    """
-
-    try:
-        logger.info('INFO', 'The Home Method Call The index.html Page')
-        return render_template('index.html')
-
-    except Exception as e:
-        logger.info('INFO', 'Something Went Wrong With The Home Method')
-        raise Exception(
-            f'(Home)- Something Went Wrong With The Method \n' + str(e))
+    return render_template('base.html')
 
 
-@app.route("/report", methods=['GET', 'POST'])
-@cross_origin()
-def report():
-    """
-    :Method_Name: report
-    :DESC: This Will Return The  Data Report Page
-    :param: None
-    :return: report.html
-    """
+@app.route("/mental_health", methods=['GET', 'POST'])
+def mental_health():
+    if request.method == 'POST':
+        # Process the form data for mental health assessment
+        # Add your logic here
+        pass
 
-    try:
-        logger.info('INFO', 'The Home Method Call The index.html Page')
-        return render_template('German_Credit_Data.html')
-
-    except Exception as e:
-        logger.info('INFO', 'Something Went Wrong With The Home Method')
-        raise Exception(
-            f'(Home)- Something Went Wrong With The Method \n' + str(e))
+    return render_template('mental_health.html')
 
 
-@app.route("/predict", methods=['POST'])
-@cross_origin()
-def predict():
-    """
-    :Method_Name: predict
-    :DESC: This Will Return The Credit Risk Is Bad or Good
-    :param: None
-    :return: The Risk Is Bad or Good
-    """
+@app.route("/menstrual_info", methods=['GET', 'POST'])
+def menstrual_info():
+    if request.method == 'POST':
+        # Process the form data for menstrual information
+        # Add your logic here
+        pass
 
-    try:
-        logger.info('INFO', 'Checking The Method Is Post Or Not')
-        if request.method == "POST":
+    return render_template('menstrual_info.html')
 
-            try:
-                logger.info(
-                    'INFO', 'The Post Method Is Call & Calling The Each Feature')
+# ... (existing code)
 
-                status = int(request.form['status'])
 
-                duration = int(request.form['duration'])
+# @app.route("/report", methods=['GET', 'POST'])
+# @cross_origin()
+# def report():
+#     """
+#     :Method_Name: report
+#     :DESC: This Will Return The  Data Report Page
+#     :param: None
+#     :return: report.html
+#     """
 
-                credit_history = int(request.form['credit_history'])
+#     try:
+#         logger.info('INFO', 'The Home Method Call The index.html Page')
+#         return render_template('German_Credit_Data.html')
 
-                purpose = int(request.form['purpose'])
+#     except Exception as e:
+#         logger.info('INFO', 'Something Went Wrong With The Home Method')
+#         raise Exception(
+#             f'(Home)- Something Went Wrong With The Method \n' + str(e))
 
-                amount = int(request.form['amount'])
 
-                savings = int(request.form['savings'])
+# @app.route("/predict", methods=['POST'])
+# @cross_origin()
+# def predict():
+#     """
+#     :Method_Name: predict
+#     :DESC: This Will Return The Credit Risk Is Bad or Good
+#     :param: None
+#     :return: The Risk Is Bad or Good
+#     """
 
-                employment_duration = int(request.form['employment_duration'])
+#     try:
+#         logger.info('INFO', 'Checking The Method Is Post Or Not')
+#         if request.method == "POST":
 
-                personal_status_sex = int(request.form['personal_status_sex'])
+#             try:
+#                 logger.info(
+#                     'INFO', 'The Post Method Is Call & Calling The Each Feature')
 
-                installment_rate = int(request.form['installment_rate'])
+#                 status = int(request.form['status'])
 
-                present_residence = int(request.form['present_residence'])
+#                 duration = int(request.form['duration'])
 
-                property = int(request.form['property'])
+#                 credit_history = int(request.form['credit_history'])
 
-                age = int(request.form['age'])
+#                 purpose = int(request.form['purpose'])
 
-                number_credits = int(request.form['number_credits'])
+#                 amount = int(request.form['amount'])
 
-                telephone = int(request.form['telephone'])
+#                 savings = int(request.form['savings'])
 
-                value = model.transform([[status, duration, credit_history, purpose, amount, savings,
-                                          employment_duration, personal_status_sex, installment_rate,
-                                          present_residence, property, age, number_credits, telephone]])
+#                 employment_duration = int(request.form['employment_duration'])
 
-                prediction = model2.predict(value)
+#                 personal_status_sex = int(request.form['personal_status_sex'])
 
-                if prediction == 0:
-                    label = 'Bad'
-                else:
-                    label = 'Good'
+#                 installment_rate = int(request.form['installment_rate'])
 
-                return render_template('result.html', prediction_text=" The Credit Risk Is {}".format(label))
+#                 present_residence = int(request.form['present_residence'])
 
-            except Exception as e:
-                logger.info(
-                    'INFO', 'Something Went Wrong With The Post From Predict Method')
-                raise Exception(
-                    f'(Predict)- Something Went Wrong With The Method \n' + str(e))
+#                 property = int(request.form['property'])
 
-        else:
-            logger.info('INFO', 'The Post Method Is Not Selected')
-            return render_template('index.html')
+#                 age = int(request.form['age'])
 
-    except Exception as e:
-        logger.info('INFO', 'Something Went Wrong With The Home Method')
-        raise Exception(
-            f'(Predict)- Something Went Wrong With The Method \n' + str(e))
+#                 number_credits = int(request.form['number_credits'])
+
+#                 telephone = int(request.form['telephone'])
+
+#                 value = model.transform([[status, duration, credit_history, purpose, amount, savings,
+#                                           employment_duration, personal_status_sex, installment_rate,
+#                                           present_residence, property, age, number_credits, telephone]])
+
+#                 prediction = model2.predict(value)
+
+#                 if prediction == 0:
+#                     label = 'Bad'
+#                 else:
+#                     label = 'Good'
+
+#                 return render_template('result.html', prediction_text=" The Credit Risk Is {}".format(label))
+
+#             except Exception as e:
+#                 logger.info(
+#                     'INFO', 'Something Went Wrong With The Post From Predict Method')
+#                 raise Exception(
+#                     f'(Predict)- Something Went Wrong With The Method \n' + str(e))
+
+#         else:
+#             logger.info('INFO', 'The Post Method Is Not Selected')
+#             return render_template('index.html')
+
+#     except Exception as e:
+#         logger.info('INFO', 'Something Went Wrong With The Home Method')
+#         raise Exception(
+#             f'(Predict)- Something Went Wrong With The Method \n' + str(e))
 
 
 if __name__ == '__main__':
