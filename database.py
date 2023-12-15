@@ -11,10 +11,10 @@ class dataBaseOperation:
     def __init__(self):
         try:
             logger.info('INFO', 'Trying To Connect With The Database')
-            self.database_name = 'credit'
+            self.database_name = 'MindFlow'
             self.collection_name = 'credit_data'
 
-            self.mongo_uri = "mongodb+srv://Ansu:9o70AT2CuEfmgaCu@home.oj4xpra.mongodb.net/"
+            self.mongo_uri = "mongodb+srv://insaneengineer6:e2PX8ym6bAOCBxsJ@cluster0.stpj7kz.mongodb.net/"
 
             self.client = MongoClient(self.mongo_uri)
             self.db = self.client[self.database_name]

@@ -35,8 +35,49 @@ def menstrual_info():
 
     return render_template('menstrual_info.html')
 
+
+@app.route("/signup", methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # Process the form data for signup
+        # You can access form data using request.form
+        name = request.form.get('name')
+        age = request.form.get('age')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        gender = request.form.get('gender')
+        phoneNumber = request.form.get('phoneNumber')
+
+        # Add your logic here, for example, storing the data in a database
+
+        # After processing the data, you can redirect to another page
+        # return redirect(url_for('home'))
+
+    # If it's a GET request, simply render the signup page
+    return render_template('signup.html')
+
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Process the form data for login
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Add your logic here, for example, check email and password against database
+
+        # After processing the data, you can redirect to another page
+        # return redirect(url_for('dashboard'))
+
+    # If it's a GET request, simply render the login page
+    return render_template('login.html')
+
 # ... (existing code)
 
+
+@app.route("/track_periods")
+def track_periods():
+    return render_template('track_periods.html')
 
 # @app.route("/report", methods=['GET', 'POST'])
 # @cross_origin()
@@ -131,7 +172,6 @@ def menstrual_info():
 #         logger.info('INFO', 'Something Went Wrong With The Home Method')
 #         raise Exception(
 #             f'(Predict)- Something Went Wrong With The Method \n' + str(e))
-
 
 if __name__ == '__main__':
     app.run(debug=True)
