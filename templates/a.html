@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+  background-color:#f0f0f0;
+  width:100vw; height: 100vh; font-size: 1vmax; 
+    /* background-image: url("static/images/mfbg5.jpg");background-repeat: no-repeat; background-attachment: fixed;  background-size: cover; */
+}
+ul {
+  list-style-type: none;
+  margin: 0; 
+  width: 100%; height: 7vmin;
+  padding-left: 100px; font-size: 1.5vmax;
+  background-color: #38444d;
+  display: flex; gap:3vmax;  position: sticky;  position: fixed;  position: -webkit-sticky;
+}
+
+li {
+  float: left; margin:10px 50px 10px 50px; 
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: green; transform: scale(1.02);
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* ------------------------------navbar property end---------------------- */
+
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  justify-content: space-evenly;  font-size: 1.5vmax;
+  background-image: url('https://getwallpapers.com/wallpaper/full/0/8/1/574978.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+.content-child{
+  width: 100%;
+  border: 2px dotted black; background-color: #2d272747;
+   margin-top: 1000px;
+  padding: 4vmax 4vmax 2vmax 4vmax; 
+}
+/* ---------------------Content end-------------------------- */
+
+/* --------------------------------------------Features----------------------------------------------- */
+.features{
+  padding: 8rem; font-size: 1.5vmax;
+}
+.feature-box{
+  /* border: 1px solid black; */ height: 100%; width: 100%;
+  border-radius: 25px;
+  box-shadow: 0px 0px 90px 10px rgba(68, 69, 70, 0.605) inset;
+  padding: 4rem;
+}
+.feature-content{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  /* padding-left: 5rem;
+  padding-right: 5rem; */
+}
+.features h2{
+  text-align: center;
+}
+.feature-child{
+  width: 30%;
+  border: 2px dotted black;
+  border-radius: 12px;
+  margin: 4vmax 0vmax;
+  padding: 2vmax;
+}
+/* -------------------------------cta---------------------------------- */
+.cta{
+  margin: 4vmax 0vmax;
+  padding: 2vmax;
+  font-size: 1.5vmax;
+}
+.cta-child{
+  padding: 2rem;
+  border-radius: 10px;
+  /* border: 20px solid black; */
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cta-child button{
+  /* width: 15rem;
+  height: 2rem; */
+  width: 20%;
+  height: 20%;
+  border-radius: 50px;
+  border: 2px solid blue; background-color: rgb(194, 235, 45);
+  cursor: pointer;
+}
+.cta-child button:hover{background-color: green; color: white; transform: scale(1.02);}
+.cta-child p{
+  padding-right: 5rem;
+  width:80%; 
+}
+/* -------------------------------footer----------------------------------- */
+.footer{
+  background-color:#213343;
+  padding: 300px;
+}
+.footer-links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vmin;   margin-bottom: 5vmax;
+}
+.footer-links a{
+  border-right: 8px solid white; padding: 0 5%;
+}
+
+.footer-foot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.foot-socials{
+  width: 20%;
+  align-items: center;
+}
+.social-icons{
+  display: flex;
+  justify-content: space-around;
+  /* backdrop-filter: blur(100px); */
+  backface-visibility: hidden;
+  /* border: 1.2px solid black; */
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  margin-bottom: 10%;
+}
+
+.social-icons div{
+  width: 100px; 
+   height:100px ;
+  border-radius: 0.25 em;
+  border: 2px solid black;
+  border-radius: 50%;  
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.gmail{
+  background-image: url("static/images/gmail.png");
+  background-color: rgb(255, 255, 255);
+}
+.facebook{
+  background-image: url("static/images/fbicon.png");
+}
+.instagram{
+  background-image: url("static/images/instagram.png");
+}
+.twitter{
+  background-image: url("static/images/twitter-xbg.png");
+  background-color: rgb(255, 255, 255);
+}
+
+.footer a, .footer p{
+  color: white;
+  text-decoration: none;
+}
+
+
+    </style>
+</head>
+<body>
+    <section class="SecA">
+        <nav>
+            <ul>
+            <li class="nav-item">
+            <a href="#" class="SecAnav">Home</a> 
+            </li>
+            <li class="nav-item">
+            <a class="SecAnav" href="#">Features</a>
+            </li>
+            <li class="dropdown" >
+                <a href="javascript:void(0)" class="dropbtn">Sign In</a>
+                <div class="dropdown-content">
+                  <a href="#">Sign In</a>
+                  <a href="#">Log In</a>
+                </div>
+              </li>
+            </ul>
+        </nav>
+
+        <div class="parent-body">
+          <div class="content">
+              <div class="content-child" id="content-text" >
+              
+              <h1 style="font-size: 2vmax; color: white; margin-bottom: 200px;">Web Design & <br/><span>Development</span> <br/>Course</h1>
+              <p style="color:white;">Lorem ipsum dolor sit adolorum ea obcaecati neque alias aspernatur pariatur! Vel quidem impedit excepturi doloribus! Nihil illum quasi nisi harum quo minima aliquam corrupti possimus cupiditate consequuntur est quia ad, non, quod perferendis accusantium maiores amet aliquid voluptas obcaecati officiis doloremque a?</p>
+              </div>
+          </div>
+          
+          
+          <div class="features" id='features-id'>
+              <div class="feature-box">
+                  <h2 style="font-size: 2vmax; color: black;">Features</h2>
+                  <div class="feature-content">
+                      <div class="feature-child" id='feature1'>
+                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatibus iste perspiciatis optio explicabo accusantium laudantium dicta itaque earum quasi neque error aspernatur, veritatis quibusdam! Officia porro maiores ipsum officiis necessitatibus doloremque iure quia quos? Officiis sequi sapiente dolores pariatur, aspernatur necessitatibus et debitis, quo aliquam nemo ullam? Eligendi, sapiente!</p>
+                      </div>
+                      <div class="feature-child" id='feature2'>
+                          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore nobis eos exercitationem, consequuntur eveniet impedit. Explicabo molestiae sed impedit deserunt illum fuga doloribus incidunt odio est, quaerat non cum blanditiis in facilis vel inventore quasi omnis ut. Quidem officiis pariatur sapiente ea saepe veniam amet tempora, placeat accusantium itaque qui!</p>
+                      </div>
+                      <div class="feature-child" id='feature3'>
+                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos quam maiores fuga quibusdam incidunt perferendis doloribus sint sed. Quo quisquam, hic quaerat debitis eius corporis iusto maxime sapiente praesentium, ipsum minus molestiae excepturi amet ex iure veritatis sit architecto labore unde, magnam obcaecati numquam ipsam fuga reprehenderit! Minus, dolore ducimus?</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="cta">
+              <div class="cta-child">
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam cumque magni totam aliquam ab id beatae quo nisi numquam blanditiis quibusdam doloribus delectus iste, possimus iusto, ut, laudantium molestiae nostrum!</p>
+                  <button>Sign Up</button>
+              </div>
+          </div>
+          <div class="footer">
+              <div class="footer-icon"></div>
+              <div class="footer-links">
+                  <a href="#">privacy policy</a>
+                  <!-- <div class="separator"></div> -->
+                  <a href="#">help</a>
+                  <!-- <div class="separator"></div> -->
+                  <a href="#" style="border: none;">terms of use</a>
+              </div>
+              <div class="footer-foot">
+                  <div class="foot-copyright">
+                      <p>Copyright © mindflow 2023.All rights reserved</p>
+                  </div>
+                  <div class="foot-socials">
+                      <p>Connect with us</p>
+                      <div class="social-icons">
+                          <div class="gmail"></div>
+                          <div class="facebook"></div>
+                          <div class="instagram"></div>
+                          <div class="twitter"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+        
+        </div>
+    </section>
+
+</body>
+</html>

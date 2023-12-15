@@ -3,6 +3,7 @@ from application_logging.logger import Logger
 from flask import Flask, request, render_template
 from flask_cors import cross_origin
 
+
 app = Flask(__name__)
 
 logger = Logger('logfiles/application.log')
@@ -13,7 +14,7 @@ logger = Logger('logfiles/application.log')
 
 @app.route("/", methods=['GET'])
 def home():
-    return render_template('base.html')
+    return render_template('b.html')
 
 
 @app.route("/mental_health", methods=['GET', 'POST'])
