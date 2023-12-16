@@ -1,0 +1,52 @@
+/* Add your menstrual information form styles here */
+
+body {
+  background: url("your-background-image.jpg") center center fixed;
+  background-size: cover;
+}
+
+.menstrual-info-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Adjust the alpha (fourth parameter) for opacity */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Adjust the alpha (fourth parameter) for shadow opacity */
+  border-radius: 8px;
+}
+
+.menstrual-info-form h1 {
+  text-align: center;
+}
+
+.menstrual-info-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.menstrual-info-form input,
+.menstrual-info-form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.menstrual-info-form button {
+  background-color: #3627da;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menstrual-info-form button:hover {
+  background-color: #45a049;
+}
