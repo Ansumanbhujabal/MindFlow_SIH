@@ -1,17 +1,6 @@
 {% extends "base.html" %} {% block title %} Signup {% endblock %} {% block
 content %}
-<form
-  action="{{ url_for('signup') }}"
-  method="post"
-  style="
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  "
->
+<form action="{{ url_for('signup') }}" method="post" class="signup-form">
   <h2>Signup</h2>
 
   <label for="name">Name:</label>
@@ -30,27 +19,22 @@ content %}
   <select id="gender" name="gender" required>
     <option value="Male">Male</option>
     <option value="Female">Female</option>
-    <option value="Female">Prefer not say</option>
-
+    <option value="PreferNotSay">Prefer not say</option>
     <!-- Add other gender options as needed -->
   </select>
 
   <label for="phoneNumber">Phone Number:</label>
   <input type="tel" id="phoneNumber" name="phoneNumber" required />
 
-  <button
-    type="submit"
-    style="
-      background-color: #4caf50;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    "
-  >
-    Signup
-  </button>
+  <button type="submit">Signup</button>
 </form>
+
+<!-- Import the CSS file -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  rel="stylesheet"
+  type="text/css"
+  href="/static/signup.css"
+/>
 {% endblock %}

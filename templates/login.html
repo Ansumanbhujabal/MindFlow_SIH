@@ -1,17 +1,6 @@
 {% extends "base.html" %} {% block title %} Login {% endblock %} {% block
 content %}
-<form
-  action="{{ url_for('login') }}"
-  method="post"
-  style="
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  "
->
+<form action="{{ url_for('login') }}" method="post" class="login-form">
   <h2>Login</h2>
 
   <label for="email">Email:</label>
@@ -20,19 +9,15 @@ content %}
   <label for="password">Password:</label>
   <input type="password" id="password" name="password" required />
 
-  <button
-    type="submit"
-    style="
-      background-color: #4caf50;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    "
-  >
-    Login
-  </button>
+  <button type="submit">Login</button>
 </form>
+
+<!-- Import the CSS file -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  rel="stylesheet"
+  type="text/css"
+  href="/static/login.css"
+/>
 {% endblock %}
