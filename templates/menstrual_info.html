@@ -1,20 +1,19 @@
 {% extends "base.html" %} {% block title %}Menstrual Information{% endblock %}
 {% block content %}
 
-
-
 <form
   action="{{ url_for('menstrual_info') }}"
   method="post"
   class="menstrual-info-form"
 >
-<h1>Menstrual Information</h1>
+  <h1>Menstrual Information</h1>
   <!-- Basic Information -->
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" required /><br />
+  <label for="age-group">Age Group:</label>
 
   <label for="age-group">Age Group:</label>
-  <select id="age-group" name="age-group" required>
+  <select id="Age-group" name="Age group" required>
     <option value="18-20">18-20</option>
     <option value="21-25">21-25</option>
     <option value="26-30">26-30</option>
@@ -23,12 +22,7 @@
 
   <!-- Menstrual Details -->
   <label for="starting-date">Starting Date of your last period:</label>
-  <input
-    type="date"
-    id="starting-date"
-    name="starting-date"
-    required
-  /><br />
+  <input type="date" id="starting-date" name="starting-date" required /><br />
 
   <label for="last-date">Last date of your period:</label>
   <input type="date" id="last-date" name="last-date" required /><br />
@@ -121,7 +115,8 @@
     <option value="Normal">Normal</option>
     <option value="Painful">Painful</option>
     <option value="Irregular">Irregular</option></select
-  ><br /> <br>
+  ><br />
+  <br />
 
   <!-- Submit Button -->
   <input type="submit" value="Submit" />
