@@ -2,15 +2,16 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   background-image: url(images/red_doc_pet.svg);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
  margin: 0;
  padding: 0;
  align-items: center;
  justify-content: center;
- height: 200vh;
+ height: 180vh;
 }
 
 .menstrual-info-form {
