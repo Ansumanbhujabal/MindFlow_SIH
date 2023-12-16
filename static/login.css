@@ -1,10 +1,22 @@
 /* styles.css */
 
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #bcdde8;
+  background-image: url(images/blue_doc.svg);
+  background-size:auto;
+  background-position: center;
+  background-repeat: no-repeat;
+ margin: 0;
+ padding: 0;
+ height: 100vh;
+}
 .login-form {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #ffffffc1;
+  backdrop-filter: blur(10px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
