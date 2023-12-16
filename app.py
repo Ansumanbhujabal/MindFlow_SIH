@@ -14,7 +14,18 @@ logger = Logger('logfiles/application.log')
 
 @app.route("/", methods=['GET'])
 def home():
+    return render_template('a.html')
+
+
+# -------------------------------------
+@app.route("/signin")
+def b():
+    return render_template('b.html')
+
+@app.route("/login")
+def c():
     return render_template('c.html')
+# -------------------------------------------
 
 
 @app.route("/mental_health", methods=['GET', 'POST'])

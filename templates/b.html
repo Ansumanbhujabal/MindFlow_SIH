@@ -7,7 +7,7 @@
     <title>Document</title>
 <style>
 body {
-  font-family: Arial, Helvetica, sans-serif; font-size: 1.5vmax;
+  font-family: Arial, Helvetica, sans-serif; font-size: 1vmax;
   /* background-color: black; */
 }
 
@@ -20,12 +20,12 @@ body {
     flex-direction: row; background-color: #c7ffbe;
 }
 .div1{
-    height:100vh;
+    height:100vh; 
     /* width:50vw; background-image: url('../static/images/MENTAL-HEALTH-scaled.jpg'); */
 }
-
+ 
 .div1, .div2{
-    margin: 10vh;
+    margin: 5vh;
 }
 .container {
   padding: 100px;
@@ -37,34 +37,37 @@ body {
 }
 
 input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel], input[type=email], .radio-group {
-  width: 70%;
+  width: 100%;
   padding: 20px;  font-size: 0.9vmax;
   margin: 20px 0 42px 0;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
+  background: none; border-bottom: 5px solid black;
 }
 
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, input[type=tel]:focus, input[type=email]:focus, .radio-group:focus {
-  background-color: #ddd;
+  /* background-color: #ddd; */
   outline: none;
 }
 
 .radio-group {
-  display: flex; align-items: center;
+  display: flex; align-items: center; border: none; 
 }
-
+input[type=radio]
+{
+    transform: scale(4); margin-right: 100px;
+}
 hr {
   border: 3px solid #f1f1f1;
   margin-bottom: 50px;
 }
 .registerbtn {
   background-color: #04AA6D; font-size: 1vmax;
-  color: white;
+  color: white;  
   margin: 50px 0;
   border: none;
   cursor: pointer;
-  width: 100%; font-size: 1.5vmax; height: 8vmin;
+  width: 100%; font-size: 1.5vmax; height: 5vmin;
   opacity: 0.9;
 }
 
@@ -96,29 +99,26 @@ a {
         <div class="div2">    
             <form action="/action_page.php">
                 <div class="container">
-                    <h1>Register</h1>
-                    <p>Please fill in this form to create an account.</p>
-                    <hr>
 
                     <div class="input-container">
                         <label for="name">Enter your name</label><br>
-                        <input type="text" id="name" name="name" placeholder="John Doe" >
+                        <input type="text" id="name" name="name" placeholder="e.g: John Doe" >
                     </div>
 
                     <div class="input-container">
                         <label for="email">Enter your email address</label><br>
-                        <input type="email" id="email" name="email" placeholder="some@gmail.com" required >
+                        <input type="email" id="email" name="email" placeholder="e.g: some@gmail.com" required >
                     </div>
 
                     <div class="input-container">
                         <label for="age">Enter your Age</label><br>
-                        <input type="number" id="age" name="age" placeholder="18" required >
+                        <input type="number" id="age" name="age" placeholder="e.g: 18" required >
                     </div>
 
     
                     <div class="input-container">
                         <label for="phoneNumber">Enter your Phone Number</label><br>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number" required >
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+91" required >
                     </div>
 
                     <div class="input-container">
@@ -130,7 +130,7 @@ a {
                         </select> -->
                         <div class="radio-group">
                             <input type="radio" id="gender" name="Gender" value="Male">
-                            <label for="Male">Male</label><br>
+                            <label for="Male" style="margin-right: 100px;">Male </label><br>
                             <input type="radio" id="gender" name="Gender" value="Female">
                             <label for="Female">Female</label>
                         </div>
@@ -138,8 +138,8 @@ a {
 
                 
                     <div class="input-container">
-                        <label for="password">Make a password</label><br>
-                        <input type="password" id="password" name="password" placeholder="e.g: N!2t67gG$#yKij"  required >
+                        <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password" placeholder="e.g: n!2tG$#yKij"  required >
                     </div>
     
                     <div class="input-container">
@@ -148,13 +148,13 @@ a {
                     </div>
 
                     <hr>
-                    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                    <p style="font-size: 0.7vmax; text-align: center;">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
                     <button type="submit" class="registerbtn">Register</button>
                 </div>
   
                 <div class="signin">
-                    <p>Already have an account? <a href="#">Sign in</a>.</p>
+                    <p style="font-size: 1vmax;">Already have an account? <a href="#">Sign in</a>.</p>
                 </div>
             </form>
         </div>
