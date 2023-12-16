@@ -15,7 +15,9 @@
 {% extends "base.html" %} {% block title %}Assessing Mental Health{% endblock %}
 {% block content %}
 <h1>Assessing Mental Health</h1>
-<form action="{{ url_for('mental_health') }}" method="post">
+<div class="mentalmain">
+<form action="{{ url_for('mental_health') }}" method="post"
+class="mental">
   <form>
     <label for="question1">1. Have you been avoiding social interaction?</label>
     <input
@@ -23,7 +25,7 @@
       id="question1"
       name="question1"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -35,7 +37,7 @@
       id="question2"
       name="question2"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -48,7 +50,7 @@
       id="question3"
       name="question3"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -60,7 +62,7 @@
       id="question4"
       name="question4"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -72,7 +74,7 @@
       id="question5"
       name="question5"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -84,7 +86,7 @@
       id="question6"
       name="question6"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -96,7 +98,7 @@
       id="question7"
       name="question7"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -109,7 +111,7 @@
       id="question8"
       name="question8"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -119,7 +121,7 @@
       id="question9"
       name="question9"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
@@ -131,12 +133,19 @@
       id="question10"
       name="question10"
       min="1"
-      max="4"
+      max="5"
       required
     /><br /><br />
 
     <input type="submit" value="Submit" />
   </form>
 </form>
-
+</div>
+<link
+  rel="stylesheet"
+  type="text/css"
+  rel="stylesheet"
+  type="text/css"
+  href="/static/mental_health.css"
+/>
 {% endblock %}

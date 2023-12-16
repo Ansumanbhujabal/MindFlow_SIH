@@ -1,28 +1,54 @@
 /* Add your menstrual information form styles here */
 
 body {
-  background: url("your-background-image.jpg") center center fixed;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  background-image: url(images/red_doc_pet.svg);
   background-size: cover;
+  background-position: center;
+ margin: 0;
+ padding: 0;
+ align-items: center;
+ justify-content: center;
+ height: 200vh;
 }
 
 .menstrual-info-form {
-  max-width: 400px;
+  max-width: 640px;
   margin: 50px auto;
   padding: 20px;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); /* Adjust the alpha (fourth parameter) for opacity */
+  background-color: #f7707be7;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Adjust the alpha (fourth parameter) for shadow opacity */
   border-radius: 8px;
 }
 
-.menstrual-info-form h1 {
+h1 {
   text-align: center;
+  color: #fff;
+}
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 17px;
 }
 
+input {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+select{
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid black;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
 .menstrual-info-form label {
   display: block;
   margin-top: 10px;
@@ -49,4 +75,15 @@ body {
 
 .menstrual-info-form button:hover {
   background-color: #45a049;
+}
+input[type="submit"] {
+  background-color:#1acade;
+  color: #fff;
+  cursor: pointer;
+  transition: #19cfe3 0.3s;border-radius: 12px;
+}
+
+input[type="submit"]:hover {
+  background-color:#25b2c2; color: black;
+  border-color: none;  transform: scale(1.02);
 }
