@@ -143,7 +143,7 @@ def track_periods():
 
     if user and user.get('gender', '').lower() == 'female':
         # Allow access to the track_periods page for female users
-        return render_template('track_periods.html')
+        return redirect('http://localhost:3000/d/3kwKHuvIc/mindflow-menstrual-dashboard?orgId=1')
     else:
         # Redirect to another page or display an error message
         return redirect(url_for('access_denied'))
