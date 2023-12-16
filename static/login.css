@@ -15,21 +15,21 @@ body {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #ffffffc1;
+  background-color: #214f73d6;
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(48, 26, 26, 0.1);
   border-radius: 8px;
 }
 
 .login-form h2 {
   text-align: center;
-  color: #333;
+  color: #fff;
 }
 
 .login-form label {
   display: block;
   margin-top: 10px;
-  color: #333;
+  color: #fff;
 }
 
 .login-form input {

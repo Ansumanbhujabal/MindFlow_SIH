@@ -1,21 +1,33 @@
 /* Add your signup form styles here */
-
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  background-image: url(images/Screenshot\ 2023-12-16\ 225112.png);
+  background-size:auto;
+  background-position: center;
+  background-repeat: no-repeat;
+ margin: 0;
+ padding: 0;
+ height: 100vh;
+}
 .signup-form {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #214f73d6;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
 .signup-form h2 {
   text-align: center;
+  color: #fff;
 }
 
 .signup-form label {
   display: block;
   margin-top: 10px;
+  color: #fff;
 }
 
 .signup-form input,
@@ -29,6 +41,7 @@
 
 .signup-form button {
   background-color: #4caf50;
+  margin-left: 140px;
   color: #fff;
   padding: 10px 15px;
   border: none;
