@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif; font-size: 1.5vmax;
+  /* background-color: black; */
+}
+
+* {
+  box-sizing: border-box;  
+}
+.parent{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; background-color: #c7ffbe;
+}
+.div1{
+    height:100vh;
+    /* width:50vw; background-image: url('../static/images/MENTAL-HEALTH-scaled.jpg'); */
+}
+
+.div1, .div2{
+    margin: 10vh;
+}
+.container {
+  padding: 100px;
+  background-color: #c7ffbe;
+  
+}
+.input-container{
+    margin: 50px 0; font-size: 1vmax;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel], input[type=email], .radio-group {
+  width: 70%;
+  padding: 20px;  font-size: 0.9vmax;
+  margin: 20px 0 42px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, input[type=tel]:focus, input[type=email]:focus, .radio-group:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.radio-group {
+  display: flex; align-items: center;
+}
+
+hr {
+  border: 3px solid #f1f1f1;
+  margin-bottom: 50px;
+}
+.registerbtn {
+  background-color: #04AA6D; font-size: 1vmax;
+  color: white;
+  margin: 50px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%; font-size: 1.5vmax; height: 8vmin;
+  opacity: 0.9;
+}
+
+.registerbtn:hover, .signin:hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  text-align: center; font-size: 1vmax;
+  color: black;
+  margin: 50px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%; font-size: 1.5vmax; height: 8vmin;
+}
+</style>
+</head>
+<body>
+    <div class="parent">
+
+        <div class="div1"></div>
+        <div class="div2">    
+            <form action="/action_page.php">
+                <div class="container">
+                    <h1>Register</h1>
+                    <p>Please fill in this form to create an account.</p>
+                    <hr>
+
+                    <div class="input-container">
+                        <label for="name">Enter your name</label><br>
+                        <input type="text" id="name" name="name" placeholder="John Doe" >
+                    </div>
+
+                    <div class="input-container">
+                        <label for="email">Enter your email address</label><br>
+                        <input type="email" id="email" name="email" placeholder="some@gmail.com" required >
+                    </div>
+
+                    <div class="input-container">
+                        <label for="age">Enter your Age</label><br>
+                        <input type="number" id="age" name="age" placeholder="18" required >
+                    </div>
+
+    
+                    <div class="input-container">
+                        <label for="phoneNumber">Enter your Phone Number</label><br>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number" required >
+                    </div>
+
+                    <div class="input-container">
+                        <label for="gender">Enter your Gender</label> <br>
+                        <!--<select id="gender" name="gender" required>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          Add other gender options as needed
+                        </select> -->
+                        <div class="radio-group">
+                            <input type="radio" id="gender" name="Gender" value="Male">
+                            <label for="Male">Male</label><br>
+                            <input type="radio" id="gender" name="Gender" value="Female">
+                            <label for="Female">Female</label>
+                        </div>
+                    </div>
+
+                
+                    <div class="input-container">
+                        <label for="password">Make a password</label><br>
+                        <input type="password" id="password" name="password" placeholder="e.g: N!2t67gG$#yKij"  required >
+                    </div>
+    
+                    <div class="input-container">
+                        <label for="password-repeat"><b>Confirm Password</b></label><br>
+                        <input type="password" placeholder="Repeat Password" name="password-repeat" id="password-repeat" required>
+                    </div>
+
+                    <hr>
+                    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+                    <button type="submit" class="registerbtn">Register</button>
+                </div>
+  
+                <div class="signin">
+                    <p>Already have an account? <a href="#">Sign in</a>.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
