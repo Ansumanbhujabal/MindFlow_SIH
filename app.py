@@ -1,8 +1,12 @@
 from flask import Flask, session, request, render_template, redirect, url_for, flash
 import pickle
+import json
+import numpy as np
 from application_logging.logger import Logger
 from flask_cors import cross_origin
 from pymongo import MongoClient
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
 
 app = Flask(__name__)
 app.secret_key = 'Mysecretkey'  # Replace with your actual secret key
@@ -25,34 +29,6 @@ users_collection = db['New']
 @app.route("/", methods=['GET'])
 def home():
     return render_template('base.html')
-
-
-@app.route("/mental_health", methods=['GET', 'POST'])
-def mental_health():
-    if request.method == 'POST':
-        # Process the form data for mental health assessment
-        # Add your logic here
-        pass
-
-    return render_template('mental_health.html')
-
-
-@app.route("/menstrual_info", methods=['GET', 'POST'])
-def menstrual_info():
-    user = get_user_info()  # Replace with your logic to get user information
-
-    if user and user.get('gender', '').lower() == 'female':
-        # Allow access to the track_periods page for female users
-        return render_template('menstrual_info.html')
-    else:
-        # Redirect to another page or display an error message
-        return redirect(url_for('access_denied'))
-    if request.method == 'POST':
-        # Process the form data for menstrual information
-        # Add your logic here
-        pass
-
-    return render_template('menstrual_info.html')
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -133,6 +109,108 @@ def get_user_info():
 
 
 # ... (existing code)
+# Define a function to assess suicide risk
+with open('mental_health_models//Mindflow_Suicide_model.pkl', 'rb') as file:
+    loaded_gb_model = pickle.load(file)
+
+with open('mental_health_models//Mindflow_Suicide_scaler.pkl', 'rb') as file:
+    loaded_scaler = pickle.load(file)
+
+with open('mental_health_models//Mindflow_Suicide_risk_factors.pkl', 'rb') as file:
+    loaded_risk_factors = pickle.load(file)
+
+# Define a function to assess suicide risk
+
+
+def assess_suicide_risk(prediction, risk_factors):
+    if prediction == 1:
+        if risk_factors['question6'] > 60 or \
+           risk_factors['question7'] > 60 or \
+           risk_factors['question8'] > 60:
+            return 'High Risk'
+        elif risk_factors['question7'] > 50:
+            return 'Intermediate Risk'
+    return 'Normal Risk'
+
+# Define a function to load models and make predictions
+
+
+def load_and_predict(user_input):
+    try:
+        # Convert the user input to a numpy array
+        user_input_array = np.array(
+            [[user_input[f'question{i}'] for i in range(1, 11)]])
+
+        # Make predictions with the loaded model
+        prediction = loaded_gb_model.predict(user_input_array)[0]
+
+        # Assess suicide risk for the user input
+        risk_factors_input = {f'question{i}': int(
+            user_input[f'question{i}']) for i in range(6, 9)}
+        suicide_risk = assess_suicide_risk(prediction, risk_factors_input)
+
+        return prediction, suicide_risk
+    except Exception as e:
+        return None, str(e)
+
+
+@app.route("/mental_health", methods=['GET', 'POST'])
+def mental_health():
+    if request.method == 'POST':
+        # Retrieve user inputs from the form
+        user_inputs = {f'question{i}': float(
+            request.form.get(f'question{i}')) for i in range(1, 11)}
+
+        # Print the user inputs to the console
+        for key, value in user_inputs.items():
+            print(f"{key}: {value}")
+
+        # Load models and make predictions using a pipeline
+        user_input_array = np.array(
+            [[user_inputs[f'question{i}'] for i in range(1, 11)]])
+        prediction = loaded_gb_model.predict(user_input_array)[0]
+
+        # Assess suicide risk for the user input
+        risk_factors_input = {f'question{i}': int(
+            user_inputs[f'question{i}']) for i in range(6, 9)}
+        suicide_risk = assess_suicide_risk(prediction, risk_factors_input)
+
+        # Print the prediction to the console
+        # if prediction is not None:
+        #     print(f"\nPrediction: {prediction}")
+        #     print(f"Suicide Risk: {suicide_risk}")
+        result_dict = {
+            "Name": get_user_info.__name__,
+            "MentalStatePrediction": "Neutral" if prediction == 0 else ("Sad" if prediction == 1 else "Happy"),
+            "SuicideRiskAssessment": "Not Applicable" if prediction != 1 else suicide_risk
+        }
+        print("\nResults:")
+        for key, value in result_dict.items():
+            print(f"{key}: {value}")
+
+        # Save the results as a JSON file
+        with open('result.json', 'w') as json_file:
+            json.dump(result_dict, json_file)
+
+    return render_template('mental_health.html')
+
+
+@app.route("/menstrual_info", methods=['GET', 'POST'])
+def menstrual_info():
+    user = get_user_info()  # Replace with your logic to get user information
+
+    if user and user.get('gender', '').lower() == 'female':
+        # Allow access to the track_periods page for female users
+        return render_template('menstrual_info.html')
+    else:
+        # Redirect to another page or display an error message
+        return redirect(url_for('access_denied'))
+    if request.method == 'POST':
+        # Process the form data for menstrual information
+        # Add your logic here
+        pass
+
+    return render_template('menstrual_info.html')
 
 
 @app.route("/track_periods")
@@ -156,99 +234,7 @@ def access_denied():
     return render_template('access_denied.html')
 
 
-# @app.route("/report", methods=['GET', 'POST'])
-# @cross_origin()
-# def report():
-#     """
-#     :Method_Name: report
-#     :DESC: This Will Return The  Data Report Page
-#     :param: None
-#     :return: report.html
-#     """
-
-#     try:
-#         logger.info('INFO', 'The Home Method Call The index.html Page')
-#         return render_template('German_Credit_Data.html')
-
-#     except Exception as e:
-#         logger.info('INFO', 'Something Went Wrong With The Home Method')
-#         raise Exception(
-#             f'(Home)- Something Went Wrong With The Method \n' + str(e))
-
-
-# @app.route("/predict", methods=['POST'])
-# @cross_origin()
-# def predict():
-#     """
-#     :Method_Name: predict
-#     :DESC: This Will Return The Credit Risk Is Bad or Good
-#     :param: None
-#     :return: The Risk Is Bad or Good
-#     """
-
-#     try:
-#         logger.info('INFO', 'Checking The Method Is Post Or Not')
-#         if request.method == "POST":
-
-#             try:
-#                 logger.info(
-#                     'INFO', 'The Post Method Is Call & Calling The Each Feature')
-
-#                 status = int(request.form['status'])
-
-#                 duration = int(request.form['duration'])
-
-#                 credit_history = int(request.form['credit_history'])
-
-#                 purpose = int(request.form['purpose'])
-
-#                 amount = int(request.form['amount'])
-
-#                 savings = int(request.form['savings'])
-
-#                 employment_duration = int(request.form['employment_duration'])
-
-#                 personal_status_sex = int(request.form['personal_status_sex'])
-
-#                 installment_rate = int(request.form['installment_rate'])
-
-#                 present_residence = int(request.form['present_residence'])
-
-#                 property = int(request.form['property'])
-
-#                 age = int(request.form['age'])
-
-#                 number_credits = int(request.form['number_credits'])
-
-#                 telephone = int(request.form['telephone'])
-
-#                 value = model.transform([[status, duration, credit_history, purpose, amount, savings,
-#                                           employment_duration, personal_status_sex, installment_rate,
-#                                           present_residence, property, age, number_credits, telephone]])
-
-#                 prediction = model2.predict(value)
-
-#                 if prediction == 0:
-#                     label = 'Bad'
-#                 else:
-#                     label = 'Good'
-
-#                 return render_template('result.html', prediction_text=" The Credit Risk Is {}".format(label))
-
-#             except Exception as e:
-#                 logger.info(
-#                     'INFO', 'Something Went Wrong With The Post From Predict Method')
-#                 raise Exception(
-#                     f'(Predict)- Something Went Wrong With The Method \n' + str(e))
-
-#         else:
-#             logger.info('INFO', 'The Post Method Is Not Selected')
-#             return render_template('index.html')
-
-#     except Exception as e:
-#         logger.info('INFO', 'Something Went Wrong With The Home Method')
-#         raise Exception(
-#             f'(Predict)- Something Went Wrong With The Method \n' + str(e))
+#
 
 if __name__ == '__main__':
     app.run(debug=True)
