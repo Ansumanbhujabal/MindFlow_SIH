@@ -105,7 +105,9 @@ def login():
 
 def get_user_info():
     # Retrieve user information from the session
-    return session.get('user_info')
+    user_info = session.get('user_info')
+    print("User Info from Session:", user_info)
+    return user_info
 
 
 # ... (existing code)
@@ -156,6 +158,7 @@ def load_and_predict(user_input):
 
 @app.route("/mental_health", methods=['GET', 'POST'])
 def mental_health():
+    user = get_user_info()
     if request.method == 'POST':
         # Retrieve user inputs from the form
         user_inputs = {f'question{i}': float(
