@@ -1,5 +1,13 @@
 {% extends "base.html" %} {% block title %} Signup {% endblock %} {% block
 content %}
+<!-- Import the CSS file -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  rel="stylesheet"
+  type="text/css"
+  href="/static/signup.css"
+/>
 <form action="{{ url_for('signup') }}" method="post" class="signup-form">
   <h2>Signup</h2>
 
@@ -29,12 +37,5 @@ content %}
   <button type="submit">Signup</button>
 </form>
 
-<!-- Import the CSS file -->
-<link
-  rel="stylesheet"
-  type="text/css"
-  rel="stylesheet"
-  type="text/css"
-  href="/static/signup.css"
-/>
+
 {% endblock %}
