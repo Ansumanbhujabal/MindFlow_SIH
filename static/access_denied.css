@@ -1,7 +1,6 @@
 .page_404 {
   padding: 40px 0;
   background: #fff;
-  font-family: "Arvo", serif;
 }
 
 .page_404 img {
@@ -17,6 +16,7 @@
 
 .four_zero_four_bg h1 {
   font-size: 80px;
+  text-align: center;
 }
 
 .four_zero_four_bg h3 {

@@ -1,0 +1,14 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #c23a3a;
+    background-image: url(images/men\ main\ bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+  }
+  .home{
+    background-color: #c23a3a;
+  }

@@ -1,5 +1,12 @@
 {% extends "base.html" %} {% block title %}Assessing Mental Health{% endblock %}
 {% block content %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  rel="stylesheet"
+  type="text/css"
+  href="/static/mental_health.css"
+/>
 <h1>Assessing Mental Health</h1>
 <div class="mentalmain">
   <form action="{{ url_for('mental_health') }}" method="post" class="mental">
@@ -298,11 +305,5 @@
     </form>
   </form>
 </div>
-<link
-  rel="stylesheet"
-  type="text/css"
-  rel="stylesheet"
-  type="text/css"
-  href="/static/mental_health.css"
-/>
+
 {% endblock %}
