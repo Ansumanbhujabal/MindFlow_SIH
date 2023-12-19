@@ -95,7 +95,7 @@ def login():
             if gender == 'male':
                 return redirect(url_for('mental_health'))
             elif gender == 'female':
-                return redirect(url_for('track_periods'))
+                return redirect(url_for('menstrual_info'))
             else:
                 return redirect(url_for('default_page'))
 
