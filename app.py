@@ -183,7 +183,7 @@ def mental_health():
         with open('result.json', 'w') as json_file:
             json.dump(result_dict, json_file)
 
-    return render_template('user.html')
+    return render_template('mental_health.html')
 
 @app.route("/badges", methods=['GET'])
 def badges():
