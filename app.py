@@ -39,7 +39,6 @@ with open('mental_health_models//Mindflow_Suicide_scaler.pkl', 'rb') as file:
 with open('mental_health_models//Mindflow_Suicide_risk_factors.pkl', 'rb') as file:
     loaded_risk_factors = pickle.load(file)
 
-
 def assess_suicide_risk(prediction, risk_factors):
     if prediction == 1:
         if risk_factors['question6'] > 60 or \
@@ -51,8 +50,6 @@ def assess_suicide_risk(prediction, risk_factors):
     return 'Normal Risk'
 
 # Define a function to load models and make predictions
-
-
 def load_and_predict(user_input):
     try:
         # Convert the user input to a numpy array
@@ -112,6 +109,10 @@ def mental_health():
             json.dump(result_dict, json_file)
 
     return render_template('mental_health.html')
+
+@app.route("/badges", methods=['GET'])
+def badges():
+    return render_template('badges.html')
 
 
 json_file = open("facialemotionmodel.json", "r")
@@ -277,11 +278,13 @@ def generate_frames():
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-
+@app.route("/user", methods=['GET'])
+def user():
+    return render_template('user.html')
+  
 @app.route("/access_denied")
 def access_denied():
     return render_template('access_denied.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)

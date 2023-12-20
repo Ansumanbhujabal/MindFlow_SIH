@@ -1,14 +1,188 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #c23a3a;
-    background-image: url(images/men\ main\ bg.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-   margin: 0;
-   padding: 0;
-   height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background-image: url(images/men\ main\ bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  height: 270vh;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80vh;
+  justify-content: space-evenly;
+  font-size: 30px;
+  background-image: url(images/blue_doc.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 0px;
+  background-size: cover;
+}
+
+.content-child {
+  width: 100%;
+  background-color: #2d272747;
+  /* margin-top: 100px; */
+  padding: 4vmax 4vmax 2vmax 4vmax;
+  padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #110d0d;
+  font-family: monospace;
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  margin-bottom: 30px;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em;
+  /* Adjust as needed */
+  animation:
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0
   }
-  .home{
-    background-color: #c23a3a;
+
+  to {
+    width: 100%
   }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: orange
+  }
+}
+.header p{
+  text-align: center;
+  font-size: 20px;
+}
+/* ---------------------Content end-------------------------- */
+
+/* --------------------------------------------Features----------------------------------------------- */
+#page2 {
+  height: 60vh;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.box {
+  text-align: center;
+  padding: 20px;
+  background-color: #214f73d6; /*#ff99a2; */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 30%;
+  color: white;
+}
+
+.box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.box p {
+  margin-top: 10px;
+}
+
+.features {
+  padding: 8rem 4rem;
+  font-size: 16px;
+}
+
+.feature-box {
+  /* border: 1px solid black; */
+  border-radius: 25px;
+  box-shadow: 0px 0px 90px 10px rgba(68, 69, 70, 0.605) inset;
+  padding: 2rem;
+}
+
+/* -------------------------------cta---------------------------------- */
+.cta {
+  margin: 4vmax 0vmax;
+  padding: 2vmax;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-child {
+  padding: 2rem;
+  border-radius: 10px;
+  /* border: 20px solid black; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cta-child button {
+  font-size: 1.5vmax;
+  width: 15%;
+  height: 50px;
+  border-radius: 50px;
+  border: 2px solid  #214f73d6; ;
+  background-color:  #f7707be7;
+  cursor: pointer;
+}
+
+.cta-child button:hover {
+  background-color: green;
+  color: white;
+  transform: scale(1.02);
+}
+
+.cta-child p {
+  margin-top: 30px;
+  padding-right: 30px;
+  width: 80%;
+  text-align: center;
+  font-size: 40px;
+}
+
+/* -------------------------------footer----------------------------------- */
+.footer {
+  background-color: #214f73d6;
+  height: 90px;
+}
+.footer p {
+  color: white;
+  padding: 30px 10px;
+  text-decoration: none;
+  text-align: center;
+}

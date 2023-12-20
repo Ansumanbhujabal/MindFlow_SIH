@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  min-height: 90vh;
+}
+
+.box {
+  flex: 0 0 14%;
+  box-sizing: border-box;
+  padding: 30px;
+  text-align: center;
+  margin: 0 1em 0 1em;
+  background-color: #f0f0f0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+h6 {
+  margin: 5px 0;
+  font-size: 1em;
+  color: #666;
+}
+h1 {
+  text-align: center;
+}
