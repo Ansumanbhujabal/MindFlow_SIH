@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "influx": "^5.9.3"
+  }
+}
