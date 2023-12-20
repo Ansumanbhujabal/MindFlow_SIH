@@ -54,7 +54,9 @@ def signup():
             'email': email,
             'password': password,
             'gender': gender,
-            'phone_number': phone_number
+            'phone_number': phone_number,
+            'badge': 'Z',
+            'points': 0
         }
 
         # Insert the user document into the MongoDB collection
@@ -194,8 +196,17 @@ def mental_health():
         # Save the results as a JSON file
         with open('result.json', 'w') as json_file:
             json.dump(result_dict, json_file)
+        # Update user points if the prediction is not None and user is not at normal risk
+        if prediction is not None and prediction != 0:
+            # Increase user points by 10
+            users_collection.update_one({'email': user['email']}, {'$inc': {'points': 10}})
 
-    return render_template('mental_health.html')
+            # Flash a success message to the user
+            flash('Congratulations! You earned 10 points for completing the mental health assessment.', 'success')
+
+            # Redirect to a success page or any other desired page
+            return redirect(url_for('home'))
+
 
 
 @app.route("/menstrual_info", methods=['GET', 'POST'])
@@ -236,6 +247,8 @@ def track_periods():
 def access_denied():
     return render_template('access_denied.html')
 
+def gotPoints():
+    user_data['points'] += 2
 
 #
 
