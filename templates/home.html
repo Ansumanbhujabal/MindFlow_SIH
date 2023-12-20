@@ -1,14 +1,57 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  rel="stylesheet"
-  type="text/css"
-  href="/static/home.css"
-/>
-<div class="home">
-  <h2>Welcome to our Calming Home</h2>
-  <p>Feel the tranquility and serenity as you explore our site.</p>
+<link rel="stylesheet" type="text/css" rel="stylesheet" type="text/css" href="/static/home.css" />
+<div class="parent-body">
+  <div class="content">
+    <div class="content-child" id="content-text">
+
+      <div class="header">
+        <h1>Welcome to MindFlow.</h1>
+      </div>
+      
+      <p style="color:white;text-align: center;font-size: 19px;line-height: 30px;">Let us  reduce the gap between you and your happiness.
+        We do nothing more than a mother who observes her child's health.
+        Your daily health journal.
+        Your second bestie to help you during periods. Recognizing the connection between mental health and menstrual cycles empowers us to understand and navigate our emotions with greater compassion.
+        You are not alone. Reach out, talk to someone, and let the light into your mental health journey</p>
+    </div>
+  </div>
+
+
+  <div class="features" id='features-id'>
+    <div class="feature-box">
+      <h2 style="font-size: 2vmax; color: black; margin-bottom: 15px;">Taking daily health survey
+      </h2>
+      <div id="page2">
+        <div class="container">
+          <div class="box">
+            <img src="../static/images/blue_doc.svg" alt="Image 1">
+            <p>Assesment of your daily mental health to be analyzed and observed by doctor on a regular basis.
+            </p>
+          </div>
+
+          <div class="box">
+            <img src="../static/images/doc_pet.jpg" alt="Image 2">
+            <p>Predict when the patient is extremely vulnerable to suicide and alert the doctor readily.
+            </p>
+          </div>
+
+          <div class="box">
+            <img src="../static/images/female.jpg" alt="Image 3">
+            <p>Record the female menstrual cycle and analyze using AI to predict period starting date along with flow rate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta">
+    <div class="cta-child">
+      <p>Mindful Thoughts, Healthy Flows: Championing Mental and Menstrual Wellness</p>
+      <button>Sign Up</button>
+    </div>
+  </div>
+  <div class="footer">
+        <p style="font-size: 18px;">Copyright © mindflow 2023.All rights reserved</p>
+  </div>
 </div>
 {% endblock %}

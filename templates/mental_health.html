@@ -1,138 +1,44 @@
 {% extends "base.html" %} {% block title %}Assessing Mental Health{% endblock %}
 {% block content %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  rel="stylesheet"
-  type="text/css"
-  href="/static/mental_health.css"
-/>
+<link rel="stylesheet" type="text/css" rel="stylesheet" type="text/css" href="/static/mental_health.css" />
 <h1>Assessing Mental Health</h1>
 <div class="mentalmain">
   <form action="{{ url_for('mental_health') }}" method="post" class="mental">
     <form>
-      <label for="question1"
-        >1. Have you been avoiding social interaction?</label
-      >
-      <input
-        type="number"
-        id="question1"
-        name="question1"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question1">1. Have you been avoiding social interaction?</label>
+      <input type="number" id="question1" name="question1" min="1" max="5" required /><br /><br />
 
-      <label for="question2"
-        >2. Have you lost interest in activities that once brought you
-        joy?</label
-      >
-      <input
-        type="number"
-        id="question2"
-        name="question2"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question2">2. Have you lost interest in activities that once brought you
+        joy?</label>
+      <input type="number" id="question2" name="question2" min="1" max="5" required /><br /><br />
 
-      <label for="question3"
-        >3. Are you experiencing difficulties with sleep patterns
-        (insomnia)?</label
-      >
-      <input
-        type="number"
-        id="question3"
-        name="question3"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question3">3. Are you experiencing difficulties with sleep patterns
+        (insomnia)?</label>
+      <input type="number" id="question3" name="question3" min="1" max="5" required /><br /><br />
 
-      <label for="question4"
-        >4. Have you recently experienced a significant loss or life
-        event?</label
-      >
-      <input
-        type="number"
-        id="question4"
-        name="question4"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question4">4. Have you recently experienced a significant loss or life
+        event?</label>
+      <input type="number" id="question4" name="question4" min="1" max="5" required /><br /><br />
 
-      <label for="question5"
-        >5. Have you been experiencing persistent sadness or
-        hopelessness?</label
-      >
-      <input
-        type="number"
-        id="question5"
-        name="question5"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question5">5. Have you been experiencing persistent sadness or
+        hopelessness?</label>
+      <input type="number" id="question5" name="question5" min="1" max="5" required /><br /><br />
 
-      <label for="question6"
-        >6. Do you think you could just vanish from earth?</label
-      >
-      <input
-        type="number"
-        id="question6"
-        name="question6"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question6">6. Do you think you could just vanish from earth?</label>
+      <input type="number" id="question6" name="question6" min="1" max="5" required /><br /><br />
 
-      <label for="question7"
-        >7. Do you think you are a burden to your loved ones?</label
-      >
-      <input
-        type="number"
-        id="question7"
-        name="question7"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question7">7. Do you think you are a burden to your loved ones?</label>
+      <input type="number" id="question7" name="question7" min="1" max="5" required /><br /><br />
 
-      <label for="question8"
-        >8. Do you feel like the emotional and physical pain you are going
-        through is unbearable?</label
-      >
-      <input
-        type="number"
-        id="question8"
-        name="question8"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question8">8. Do you feel like the emotional and physical pain you are going
+        through is unbearable?</label>
+      <input type="number" id="question8" name="question8" min="1" max="5" required /><br /><br />
 
       <label for="question9">9. Are you really happy now?</label>
-      <input
-        type="number"
-        id="question9"
-        name="question9"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <input type="number" id="question9" name="question9" min="1" max="5" required /><br /><br />
 
-      <label for="question10"
-        >10. How much are you bothered by your negative thoughts?</label
-      >
-      <input
-        type="number"
-        id="question10"
-        name="question10"
-        min="1"
-        max="5"
-        required
-      /><br /><br />
+      <label for="question10">10. How much are you bothered by your negative thoughts?</label>
+      <input type="number" id="question10" name="question10" min="1" max="5" required /><br /><br />
 
       <input type="submit" value="Submit" />
     </form>
