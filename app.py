@@ -54,9 +54,7 @@ def signup():
             'email': email,
             'password': password,
             'gender': gender,
-            'phone_number': phone_number,
-            'badge': 'Z',
-            'points': 0
+            'phone_number': phone_number
         }
 
         # Insert the user document into the MongoDB collection
@@ -90,16 +88,8 @@ def login():
                 'gender': user['gender']
                 # Add other user information as needed
             }
-
-            # Redirect based on gender
-            gender = user.get('gender', '').lower()
-
-            if gender == 'male':
-                return redirect(url_for('mental_health'))
-            # elif gender == 'female':
-            #     return redirect(url_for('menstrual_info'))
-            else:
-                return redirect(url_for('default_page'))
+            flash('Got your first badge!', 'success')
+            return redirect(url_for('mental_health'))
 
     # If it's a GET request or if the login is unsuccessful, render the login page
     return render_template('login.html')
@@ -124,8 +114,6 @@ with open('mental_health_models//Mindflow_Suicide_risk_factors.pkl', 'rb') as fi
     loaded_risk_factors = pickle.load(file)
 
 # Define a function to assess suicide risk
-
-
 def assess_suicide_risk(prediction, risk_factors):
     if prediction == 1:
         if risk_factors['question6'] > 60 or \
@@ -137,8 +125,6 @@ def assess_suicide_risk(prediction, risk_factors):
     return 'Normal Risk'
 
 # Define a function to load models and make predictions
-
-
 def load_and_predict(user_input):
     try:
         # Convert the user input to a numpy array
@@ -185,7 +171,7 @@ def mental_health():
         #     print(f"\nPrediction: {prediction}")
         #     print(f"Suicide Risk: {suicide_risk}")
         result_dict = {
-            "Name": get_user_info.__name__,
+            "Name": get_user_info.name,
             "MentalStatePrediction": "Neutral" if prediction == 0 else ("Sad" if prediction == 1 else "Happy"),
             "SuicideRiskAssessment": "Not Applicable" if prediction != 1 else suicide_risk
         }
@@ -196,59 +182,23 @@ def mental_health():
         # Save the results as a JSON file
         with open('result.json', 'w') as json_file:
             json.dump(result_dict, json_file)
-        # Update user points if the prediction is not None and user is not at normal risk
-        if prediction is not None and prediction != 0:
-            # Increase user points by 10
-            users_collection.update_one({'email': user['email']}, {'$inc': {'points': 10}})
 
-            # Flash a success message to the user
-            flash('Congratulations! You earned 10 points for completing the mental health assessment.', 'success')
+    return render_template('mental_health.html')
 
-            # Redirect to a success page or any other desired page
-            return redirect(url_for('home'))
+@app.route("/badges", methods=['GET'])
+def badges():
+    return render_template('badges.html')
 
+@app.route("/user", methods=['GET'])
+def user():
+    return render_template('user.html')
 
-
-@app.route("/menstrual_info", methods=['GET', 'POST'])
-def menstrual_info():
-    user = get_user_info()  # Replace with your logic to get user information
-
-    if user and user.get('gender', '').lower() == 'female':
-        # Allow access to the track_periods page for female users
-        return render_template('menstrual_info.html')
-    else:
-        # Redirect to another page or display an error message
-        return redirect(url_for('access_denied'))
-    if request.method == 'POST':
-        # Process the form data for menstrual information
-        # Add your logic here
-        pass
-
-    return render_template('menstrual_info.html')
-
-
-@app.route("/track_periods")
-def track_periods():
-    # Assuming the user information is available in the session or database
-    # Replace this with your actual way of retrieving user information
-    user = get_user_info()  # Replace with your logic to get user information
-
-    if user and user.get('gender', '').lower() == 'female':
-        # Allow access to the track_periods page for female users
-        return redirect('http://localhost:3000/d/3kwKHuvIc/mindflow-menstrual-dashboard?orgId=1')
-    else:
-        # Redirect to another page or display an error message
-        return redirect(url_for('access_denied'))
-
-# You can create a separate route for an access denied page
 
 
 @app.route("/access_denied")
 def access_denied():
     return render_template('access_denied.html')
 
-def gotPoints():
-    user_data['points'] += 2
 
 #
 
