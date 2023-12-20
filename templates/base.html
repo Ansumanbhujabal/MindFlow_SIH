@@ -9,25 +9,20 @@
   <!-- Link to the external CSS file -->
   <link rel="stylesheet" type="text/css" rel="stylesheet" type="text/css" href="/static/base.css" />
 
-  <!-- Your inline CSS styles -->
-</head>
 
-<body>
-  <nav>
-    <ul>
-      <li><a href="{{ url_for('home') }}">Home</a></li>
-      <li><a href="{{ url_for('signup') }}">Signup</a></li>
-      <li><a href="{{ url_for('login') }}">Login</a></li>
-      <li>
-        <a href="{{ url_for('mental_health') }}">Mental Health</a>
-      </li>
-      <li><a href="{{ url_for('menstrual_info') }}">Menstrual Health</a></li>
-      <li><a href="{{ url_for('track_periods') }}">periods track</a></li>
-    </ul>
-  </nav>
-
+    <!-- Your inline CSS styles  -->
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('signup') }}">Signup</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('badges') }}">Badges</a></li>
+        <li><a href="{{ url_for('user') }}">User</a></li>
+        <li><a href="{{ url_for('mental_health') }}">Assessing Mental Health</a></li>
+      </ul>
+    </nav>
   <div class="content">{% block content %}{% endblock %}</div>
-
 </body>
-
 </html>
