@@ -171,7 +171,7 @@ def mental_health():
         #     print(f"\nPrediction: {prediction}")
         #     print(f"Suicide Risk: {suicide_risk}")
         result_dict = {
-            "Name": get_user_info.name,
+            "Name": get_user_info.__name__,
             "MentalStatePrediction": "Neutral" if prediction == 0 else ("Sad" if prediction == 1 else "Happy"),
             "SuicideRiskAssessment": "Not Applicable" if prediction != 1 else suicide_risk
         }
@@ -183,7 +183,7 @@ def mental_health():
         with open('result.json', 'w') as json_file:
             json.dump(result_dict, json_file)
 
-    return render_template('mental_health.html')
+    return render_template('user.html')
 
 @app.route("/badges", methods=['GET'])
 def badges():
