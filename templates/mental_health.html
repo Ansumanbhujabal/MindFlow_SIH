@@ -1,19 +1,12 @@
 {% extends "base.html" %} {% block title %}Assessing Mental Health{% endblock %}
 {% block content %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  rel="stylesheet"
-  type="text/css"
-  href="/static/mental_health.css"
-/>
+<link rel="stylesheet" type="text/css" rel="stylesheet" type="text/css" href="/static/mental_health.css" />
 <h1>Assessing Mental Health</h1>
 <div class="mentalmain">
   <form action="{{ url_for('mental_health') }}" method="post" class="mental">
     <form>
-      <label for="question1"
-        >1. Have you been avoiding social interaction?</label
-      >
+      <label for="question1">
+        1. Have you been avoiding social interaction?</label>
       <div class="container">
         <div class="selector">
             <div class="selector-item">
@@ -300,7 +293,6 @@
         </div>
     </div>
 </div><br /><br />
-
       <input type="submit" value="Submit" />
     </form>
   </form>
