@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}User Input Form{% endblock %}</title>
 
-     <!-- Link to the external CSS file -->
+    <!-- Link to the external CSS file -->
     <link
       rel="stylesheet"
       type="text/css"
@@ -15,7 +15,7 @@
       href="/static/base.css"
     />
 
-     <!-- Your inline CSS styles  -->
+    <!-- Your inline CSS styles  -->
   </head>
   <body>
     <nav>
@@ -26,15 +26,13 @@
         <li>
           <a href="{{ url_for('mental_health') }}">Assessing Mental Health</a>
         </li>
-        <li>
+        <!--<li>
           <a href="{{ url_for('menstrual_info') }}">Menstrual Information</a>
-        </li>
+        </li> 
 
-        <li><a href="{{ url_for('track_periods') }}">Track Your Periods</a></li>
+        <li><a href="{{ url_for('track_periods') }}">Track Your Periods</a></li>-->
       </ul>
     </nav>
-
-    
 
     <div class="content">{% block content %}{% endblock %}</div>
   </body>
