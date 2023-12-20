@@ -26,7 +26,13 @@
         <li>
           <a href="{{ url_for('mental_health') }}">Assesment</a>
         </li>
+
+        <li>
+          <a href="{{ url_for('facial_emotion_detection') }}">Facial</a>
+        </li>
+
         <li><a href="{{ url_for('user') }}">User</a></li>
+
       </ul>
     </nav>
     <div class="content">{% block content %}{% endblock %}</div>
