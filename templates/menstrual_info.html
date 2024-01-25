@@ -1,0 +1,130 @@
+{% extends "base.html" %} {% block title %}Menstrual Information{% endblock %}
+{% block content %}
+<!-- Import the CSS file -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  rel="stylesheet"
+  type="text/css"
+  href="/static/menstrual_info.css"
+/>
+<form
+  action="{{ url_for('menstrual_info') }}"
+  method="post"
+  class="menstrual-info-form"
+>
+  <h1>Menstrual Information</h1>
+  <!-- Basic Information -->
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required /><br />
+  <label for="age-group">Age Group:</label>
+  <select id="Age-group" name="Age group" required>
+    <option value="18-20">18-20</option>
+    <option value="21-25">21-25</option>
+    <option value="26-30">26-30</option>
+    <option value="31-35">31-35</option></select
+  ><br />
+
+  <!-- Menstrual Details -->
+  <label for="starting-date">Starting Date of your last period:</label>
+  <input type="date" id="starting-date" name="starting-date" required /><br />
+
+  <label for="last-date">Last date of your period:</label>
+  <input type="date" id="last-date" name="last-date" required /><br />
+
+  <label for="second-last-date">Start date of your Second last Period:</label>
+  <input
+    type="date"
+    id="second-last-date"
+    name="second-last-date"
+    required
+  /><br />
+
+  <!-- Mood-related Fields -->
+  <label for="mood-excitement"
+    >How would you rate your mood swings? [Excitement]:</label
+  >
+  <select id="mood-excitement" name="mood-excitement" required>
+    <option value="Very Less">Very Less</option>
+    <option value="Less">Less</option>
+    <option value="Neutral">Neutral</option>
+    <option value="High">High</option>
+    <option value="Very High">Very High</option></select
+  ><br />
+
+  <label for="mood-overwhelmed"
+    >How would you rate your mood swings? [Overwhelmed]:</label
+  >
+  <select id="mood-overwhelmed" name="mood-overwhelmed" required>
+    <option value="Very Less">Very Less</option>
+    <option value="Less">Less</option>
+    <option value="Neutral">Neutral</option>
+    <option value="High">High</option>
+    <option value="Very High">Very High</option></select
+  ><br />
+
+  <label for="mood-anger">How would you rate your mood swings? [Anger]:</label>
+  <select id="mood-anger" name="mood-anger" required>
+    <option value="Very Less">Very Less</option>
+    <option value="Less">Less</option>
+    <option value="Neutral">Neutral</option>
+    <option value="High">High</option>
+    <option value="Very High">Very High</option></select
+  ><br />
+
+  <label for="mood-frustration"
+    >How would you rate your mood swings? [Frustration]:</label
+  >
+  <select id="mood-frustration" name="mood-frustration" required>
+    <option value="Very Less">Very Less</option>
+    <option value="Less">Less</option>
+    <option value="Neutral">Neutral</option>
+    <option value="High">High</option>
+    <option value="Very High">Very High</option></select
+  ><br />
+
+  <label for="mood-sadness"
+    >How would you rate your mood swings? [Sad or Depression]:</label
+  >
+  <select id="mood-sadness" name="mood-sadness" required>
+    <option value="Very Less">Very Less</option>
+    <option value="Less">Less</option>
+    <option value="Neutral">Neutral</option>
+    <option value="High">High</option>
+    <option value="Very High">Very High</option></select
+  ><br />
+
+  <label for="mood-anxiety"
+    >How would you rate your mood swings? [Anxiety]:</label
+  >
+  <select id="mood-anxiety" name="mood-anxiety" required>
+    <option value="Very Less">Very Less</option>
+    <option value="Less">Less</option>
+    <option value="Neutral">Neutral</option>
+    <option value="High">High</option>
+    <option value="Very High">Very High</option></select
+  ><br />
+
+  <!-- Other Information -->
+  <label for="period-flow">How is your period flow:</label>
+  <select id="period-flow" name="period-flow" required>
+    <option value="Light">Light</option>
+    <option value="Medium">Medium</option>
+    <option value="Heavy">Heavy</option></select
+  ><br />
+
+  <label for="menstrual-health"
+    >How would you like to rate your recent menstrual health?</label
+  >
+  <select id="menstrual-health" name="menstrual-health" required>
+    <option value="Normal">Normal</option>
+    <option value="Painful">Painful</option>
+    <option value="Irregular">Irregular</option></select
+  ><br />
+  <br />
+
+  <!-- Submit Button -->
+  <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

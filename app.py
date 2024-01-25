@@ -286,5 +286,9 @@ def user():
 def access_denied():
     return render_template('access_denied.html')
 
+@app.route("/mestrual_info", methods=['GET'])
+def menstrual_info():
+    return render_template('menstrual_info.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
